@@ -1,0 +1,30 @@
+.flexRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    width: 150px;
+    margin-top: 15px;
+    text-align: center;
+    margin-left: 20px;
+    padding: 10px;
+    
+}
+.separator{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.center{
+    margin-top: 62px;
+    margin-left: 20px;
+    margin-right: 15px;
+    font-weight: bold;
+}
+.alling{
+    text-align: center;
+}
+.ajusts{
+  margin-left: 25px;
+}
