@@ -17,7 +17,7 @@ export default function Card(props) {
         let inv = parseFloat(invs)
         let saldo = newValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
         console.log(saldo)
-        teste.push({
+        lista.push({
             id: id++,
             juros: newJuros,
             saldo: saldo,
@@ -28,12 +28,12 @@ export default function Card(props) {
         newJuros = parseFloat(newJuros) + parseFloat(juros)
         newJuros = newJuros.toFixed(2)
     }
-    console.log(teste)
+    console.log(lista)
     
     return (
         <div>
             <div>
-                <List lists={teste}/>
+                <List lists={lista}/>
             </div>
         </div>
     )       
