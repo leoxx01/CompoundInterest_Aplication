@@ -3,15 +3,13 @@ import List from './List'
 
 export default function Card(props) {
     const {value, juros , period} = props
-    let teste = []
+    let lista = []
 
     let newValue = value
     let newJuros = juros
     let invs = 0
     let id = 1
 
-   
-    
     for(let i = 0 ; i < period;i++){
         invs = newValue * parseFloat(juros/100) 
         let inv = parseFloat(invs)
