@@ -3,6 +3,7 @@ import List from './List'
 
 export default function Card(props) {
     const {value, juros , period} = props
+    
     let lista = []
 
     let newValue = value
@@ -11,27 +12,40 @@ export default function Card(props) {
     let id = 1
 
     for(let i = 0 ; i < period;i++){
-        invs = newValue * parseFloat(juros/100) 
-        let inv = parseFloat(invs)
-        let saldo = newValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-        console.log(saldo)
-        lista.push({
-            id: id++,
-            juros: newJuros,
-            saldo: saldo,
-            ganho: inv.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-            })
+        if(parseFloat(value)>0){
+            invs = newValue * parseFloat(juros/100) 
+            let inv = parseFloat(invs)
+            let saldo = newValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            lista.push({
+                id: id++,
+                juros: newJuros,
+                saldo: saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                ganho: inv.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                })
 
-        newValue = parseFloat(newValue) + inv
-        newJuros = parseFloat(newJuros) + parseFloat(juros)
-        newJuros = newJuros.toFixed(2)
+            newValue = parseFloat(newValue) + inv
+            newJuros = parseFloat(newJuros) + parseFloat(juros)
+            newJuros = newJuros.toFixed(2)
+        }else{
+            invs = newValue * parseFloat(juros/100) 
+            let inv = parseFloat(invs)
+            let saldo = newValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            lista.push({
+                id: id++,
+                juros: newJuros,
+                saldo: saldo.replace("-",""),
+                ganho: inv.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                })
+
+            newValue = parseFloat(newValue) - inv
+            newJuros = parseFloat(newJuros) + parseFloat(juros)
+            newJuros = newJuros.toFixed(2)
+        }
     }
-    console.log(lista)
-    
     return (
         <div>
             <div>
-                <List lists={lista}/>
+                <List lists={lista} check={parseFloat(value)>0}/>
             </div>
         </div>
     )       
