@@ -10,18 +10,21 @@ export default function Card(props) {
     let invs = 0
     let id = 1
 
-    for(let i = 0 ; i <period;i++){
-        invs = parseFloat(value) * parseFloat(newJuros)
-        let inv = invs.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        newValue = parseFloat(value) + parseFloat(invs)
-        let saldo = newValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        console.log()
+   
+    
+    for(let i = 0 ; i < period;i++){
+        invs = newValue * parseFloat(juros/100) 
+        let inv = parseFloat(invs)
+        let saldo = newValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        console.log(saldo)
         teste.push({
-        id: id++,
-        juros: newJuros,
-        saldo: saldo,
-        ganho: inv
-        })
+            id: id++,
+            juros: newJuros,
+            saldo: saldo,
+            ganho: inv.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            })
+
+        newValue = parseFloat(newValue) + inv
         newJuros = parseFloat(newJuros) + parseFloat(juros)
         newJuros = newJuros.toFixed(2)
     }
